@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./twitch.css">
+    </head>
+    <body>
+        <div id="last-follower" class="js-glitch last-follower"></div>
+        <script src="./glitch.js"></script>
+        <script src="./twitchapi.js"></script>
+        <script>
+            const REFRESH_RATE = 20; // seconds
+            function refresh() {
+                Twitch.myLastFollower().then(function(response) {
+                    var element = document.getElementById('last-follower');
+                    element.innerHTML = 'Dernier follow : ' + response.from_name;
+                    glitchify(element);
+                });
+                setTimeout(refresh, REFRESH_RATE * 1000);
+            }
+            refresh();
+        </script>
+    </body>
+</html>

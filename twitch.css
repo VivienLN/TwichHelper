@@ -1,0 +1,104 @@
+body { 
+    background: #111;
+    color: #fff; 
+    overflow:hidden; 
+    font-family: "Permanent Marker", sans-serif;
+}
+
+.js-glitch {
+    position: relative;
+}
+
+.glitch-main {
+    animation: glitchMain 6s ease 1s infinite forwards;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
+.glitch-fx {
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+
+.glitch-left {
+    color: #44FFAA;
+    opacity: 0;
+    animation: glitchLeft 6s ease .2s infinite forwards;
+    z-index:-1;
+}
+
+.glitch-right {
+    color: #FF44FF;
+    opacity: 0;
+    animation: glitchRight 6s ease .3s infinite forwards;
+    z-index:-1;
+}
+
+.glitch-cut {
+    opacity:0;
+    animation: glitchCut 6s ease 1s infinite forwards;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+@keyframes glitchMain {
+    0%, 60% { clip-path: none; }
+    61%, 62% { clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%) }
+    65% { clip-path: none; }
+}
+
+@keyframes glitchLeft {
+    0%, 60% { transform: translate3d(0,0,0); opacity:0; }
+    61%, 62% { transform: translate3d(-6px,0,0); opacity:0.7; }
+    65% { transform: translate3d(0,0,0); opacity:0; }
+}
+
+@keyframes glitchRight {
+    0%, 60% { transform: translate3d(0,0,0); opacity:0; }
+    61%, 62% { transform: translate3d(6px,0,0); opacity:0.7; }
+    65% { transform: translate3d(0,0,0); opacity:0; }
+}
+
+@keyframes glitchCut {
+    0%, 60% { transform: translate3d(0,0,0); opacity:0; }
+    61%, 62% { transform: translate3d(10px,0,0); opacity:1; }
+    65% { transform: translate3d(0,0,0); opacity:0; }
+}
+
+
+/* Specifics */
+
+.stream-title {
+    font-size:60px;
+    width: 1600px;
+}
+.stream-title .glitch-main {
+    text-shadow: 2px 2px 0 #007e9e;
+}
+
+.last-follower {
+    font-size:40px;
+    width: 600px;
+}
+.last-follower .glitch-main {
+    text-shadow: 2px 2px 0 #007e9e;
+}
+
+.break-message {
+    font-size:80px;
+    width: auto;
+    align-self: center;
+}
+
+.break-message .glitch-fx,
+.break-message .glitch-main {
+    text-shadow: 2px 2px 0 #007e9e;
+    overflow: visible;
+    white-space: normal; 
+}

@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./twitch.css">
+    </head>
+    <body style="display:flex;">
+        <div id="break-message" class="js-glitch break-message"></div>
+        <script src="./glitch.js"></script>
+        <script src="./twitchapi.js"></script>
+        <script>
+            var element = document.getElementById('break-message');
+            element.innerText = decodeURIComponent(window.location.hash.substr(1));
+            glitchify(element);
+        </script>
+    </body>
+</html>

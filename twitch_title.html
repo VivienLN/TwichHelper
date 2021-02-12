@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./twitch.css">
+    </head>
+    <body>
+        <div id="stream-title" class="js-glitch stream-title"></div>
+        <script src="./glitch.js"></script>
+        <script src="./credentials.js"></script>
+        <script src="./twitchapi.js"></script>
+        <script>
+            const REFRESH_RATE = 20; // seconds
+            function refresh() {
+                Twitch.myChannel().then(function(response) {
+                    var element = document.getElementById('stream-title');
+                    element.innerText = response.title;
+                    glitchify(element);
+                });
+                setTimeout(refresh, REFRESH_RATE * 1000);
+            }
+            refresh();
+        </script>
+    </body>
+</html>
